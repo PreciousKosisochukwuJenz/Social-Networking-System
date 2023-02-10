@@ -1,5 +1,5 @@
-// const url = "https://sprm.herokuapp.com";
-const url = "http://localhost:3000";
+const url = "https://social-networking-system.herokuapp.com";
+// const url = "http://localhost:3000";
 
 $("#setting").submit(function (event) {
   event.preventDefault();
