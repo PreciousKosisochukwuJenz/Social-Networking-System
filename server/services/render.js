@@ -41,9 +41,10 @@ exports.groupChat = async (req, res) => {
 };
 
 exports.personalchat = async (req, res) => {
-  const to = req.params.id;
+  const to = req.query.id;
   const authUser = req.user;
-  const chats = await axios.get(`${url}/api/chats/personal?to=${to}`);
-  res.render("personalchat", { authUser, chats: chats.data.chats, title: "Personal chat" });
+  const user = await axios.get(`${url}/api/users/${to}`);
+  const chats = await axios.get(`${url}/api/chats/personal?to=${to}&from=${authUser._doc._id}`);
+  res.render("personalchat", { authUser, chats: chats.data.chats, user: user.data.user, title: "Personal chat" });
 };
 

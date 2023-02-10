@@ -212,7 +212,7 @@ $(".showpassword").click(function(e){
                     </div>
                   </div>
                   <div class="d-flex">
-                    <a href="/personalchat/${friend._id}" class="card-btn">
+                    <a href="/personalchat?id=${friend._id}" class="card-btn">
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="3" y="5" width="18" height="14" rx="2" /><polyline points="3 7 12 13 21 7" /></svg>
                       Chat</a>
                   </div>
@@ -423,6 +423,19 @@ $(".showpassword").click(function(e){
                 url: `${url}/api/chats/group`,
                 method: "POST",
                 data: {message}
+              };
+
+            $.ajax(request).done(function (response) {
+              location.reload();
+            });
+ })
+  $("#sendPersonalMessage").click(function(){
+  const message = $("#messageBox").val();
+  const to = location.href.split("=")[1];
+      const request = {
+                url: `${url}/api/chats/personal`,
+                method: "POST",
+                data: {message,to}
               };
 
             $.ajax(request).done(function (response) {

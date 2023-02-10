@@ -48,7 +48,7 @@ route.get("/groupchat", services.groupChat);
  *  @description Root Route
  *  @method GET /
  */
-route.get("/personalchat/:id", services.personalchat);
+route.get("/personalchat", services.personalchat);
 
 
 //Friend

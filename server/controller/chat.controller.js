@@ -26,10 +26,10 @@ exports.messageGroupChat = async (req, res) => {
 };
 
 exports.getPersonalChats = async (req, res) => {
-  const from = req.user._id;
+  const from = req.query.from;
   const to = req.query.to;
 
-  const chats = await Chat.find({ $or:[{to}, {from}]}).sort({createdAt: -1}).populate("to from");
+  const chats = await Chat.find({ $or:[{to}, {to: from}]}).sort({createdAt: -1}).populate("to from");
   res.status(200).send({
     message: `Request successful`,
     chats
