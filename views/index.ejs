@@ -1,0 +1,234 @@
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+
+<div class="container-xl">
+  <!-- Page title -->
+<div class="page-header">
+  <div class="row align-items-center">
+    <div class="col-auto">
+      <span class="avatar avatar-md bg-blue-lt"><%= authUser.image %></span>
+    </div>
+    <div class="col">
+      <h2 class="page-title"><%= authUser.name %></h2>
+      <div class="page-subtitle">
+        <div class="row">
+          <div class="col-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24"
+            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M12 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+          </svg>
+            <a href="#" class="text-reset">@<%= authUser.username %></a>
+          </div>
+          <div class="col-auto">
+            <!-- Download SVG icon from http://tabler-icons.io/i/users -->
+            <!-- SVG icon code -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24" height="24"
+              viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+              <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
+            </svg>
+            <a href="#" class="text-reset"><%= authUser.followerCount %> friends</a>
+          </div>
+          <div class="col-auto text-success">
+            <!-- Download SVG icon from http://tabler-icons.io/i/check -->
+            <!-- SVG icon code with class="text-green" -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="24" height="24"
+              viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M5 12l5 5l10 -10"></path>
+            </svg>
+            Verified
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-auto d-none d-md-flex">
+      <a  href="#"
+                class="btn btn-primary d-none d-sm-inline-block"
+                data-bs-toggle="modal"
+                data-bs-target="#create-post-modal"
+      >
+        <!-- Download SVG icon from http://tabler-icons.io/i/message -->
+        <!-- SVG icon code -->
+        Create new Post
+      </a>
+    </div>
+  </div>
+</div>
+</div>
+<div class="page-body">
+  <div class="container-xl">
+    <div class="row row-cards">
+     <div class="col-12">
+       <div class="hr-text">Friend list</div>
+      <div class="row row-cards" id="friendListContent">
+      <div class="col-3">
+        <div class="card">
+          <div class="ratio ratio-21x9 card-img-top">
+            <div class="skeleton-image"></div>
+          </div>
+          <div class="card-body">
+            <div class="skeleton-heading"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="card">
+          <div class="ratio ratio-21x9 card-img-top">
+            <div class="skeleton-image"></div>
+          </div>
+          <div class="card-body">
+            <div class="skeleton-heading"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="card">
+          <div class="ratio ratio-21x9 card-img-top">
+            <div class="skeleton-image"></div>
+          </div>
+          <div class="card-body">
+            <div class="skeleton-heading"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="card">
+          <div class="ratio ratio-21x9 card-img-top">
+            <div class="skeleton-image"></div>
+          </div>
+          <div class="card-body">
+            <div class="skeleton-heading"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+     <div class="hr-text">Newest posts</div>
+      <div class="col-12">
+        <div class="row row-cards">
+          <div id="postContent">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-auto">
+                        <div class="skeleton-avatar"></div>
+                      </div>
+                      <div class="col">
+                        <div class="skeleton-line"></div>
+                        <div class="skeleton-line"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-auto">
+                          <div class="skeleton-avatar"></div>
+                        </div>
+                        <div class="col">
+                          <div class="skeleton-line"></div>
+                          <div class="skeleton-line"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  <div class="col-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-auto">
+                            <div class="skeleton-avatar"></div>
+                          </div>
+                          <div class="col">
+                            <div class="skeleton-line"></div>
+                            <div class="skeleton-line"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal modal-blur fade" id="create-post-modal" tabindex="-1" department="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg" department="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create post</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="mb-3">
+              <label class="form-label"></label>
+              <div class="row g-2">
+                <div class="col">
+                  <textarea name="body" id="postBody" cols="10"  rows="10" class="form-control"
+                    placeholder="Type..."></textarea>
+                    <input type="hidden" id="userId" value="<%= authUser._id %>" />
+                </div>
+                <div class="col-auto align-self-center">
+                  <span class="form-help" data-bs-toggle="popover" data-bs-placement="top"
+                    data-bs-content="<p>Type content of post</p> " data-bs-html="true">?</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+          Cancel
+        </a>
+        <a href="#" class="btn btn-primary ms-auto" id="CreatePostBtn">
+          <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <line x1="12" y1="5" x2="12" y2="19" />
+            <line x1="5" y1="12" x2="19" y2="12" />
+          </svg>
+          Post
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+  integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+  crossorigin="anonymous"></script>
+<script>
+ $(function(){
+  loadPost();
+  loadFriends();
+  loadDiscoverFriends();
+ })
+</script>
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->

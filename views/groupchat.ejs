@@ -1,0 +1,122 @@
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+
+<div class="container-xl">
+    <!-- Page title -->
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col-auto">
+                <span class="avatar avatar-md bg-blue-lt"><%= authUser.image %></span>
+            </div>
+            <div class="col">
+                <h2 class="page-title"><%= authUser.name %></h2>
+                <div class="page-subtitle">
+                    <div class="row">
+                        <div class="col-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24"
+                                height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M12 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+                                <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                            </svg>
+                            <a href="#" class="text-reset">@<%= authUser.username %></a>
+                        </div>
+                        <div class="col-auto">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/users -->
+                            <!-- SVG icon code -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+                                <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
+                            </svg>
+                            <a href="#" class="text-reset"><%= authUser.followerCount %> friends</a>
+                        </div>
+                        <div class="col-auto text-success">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/check -->
+                            <!-- SVG icon code with class="text-green" -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M5 12l5 5l10 -10"></path>
+                            </svg>
+                            Verified
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-body">
+    <div class="container-xl">
+        <div class="row row-cards">
+            <div class="col-12">
+                <div class="row row-cards">
+                        <div class="hr-text">Group messages</div>
+                    <div>
+                        <div class="col-12">
+                            <div style="overflow-y:scroll; height: 400px;">
+                                <% for(let message of chats) {%>
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                            <div class="col-auto">
+                                                <div class="">
+                                                    <span class="avatar avatar-md bg-blue-lt"><%= message.from.image %></span>
+                                                </div>
+                                            </div>
+                                                <div class="col">
+                                                    <h3><%= message.message %></h3>
+                                                    <small class="text-muted"><%= new Date(message.createdAt).toLocaleString() %></small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%}%>
+                            </div>
+                          
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="mb-3">
+                                            <input type="text" id="messageBox" class="form-control" placeholder="type..." />
+                                        </div>
+                                        <div class="col-md-2">
+                                                <a href="#" class="btn btn-facebook w-100 btn-icon" aria-label="Send" id="sendGroupMessage">
+                                                    <!-- Download SVG icon from http://tabler-icons.io/i/brand-facebook -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-send" width="24" height="24"
+                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M10 14l11 -11"></path>
+                                                    <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5"></path>
+                                                </svg>
+                                                </a>
+                                            </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+    crossorigin="anonymous"></script>
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->
